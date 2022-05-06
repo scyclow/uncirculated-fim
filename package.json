@@ -1,0 +1,31 @@
+{
+  "name": "uncirculated",
+  "version": "1.0.0",
+  "main": "hardhat.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npx hardhat test",
+    "deploy:local": "hardhat run --network localhost scripts/deployLocal.js",
+    "deploy:rinkeby": "npx hardhat run scripts/deployRinkeby.js --network rinkeby",
+    "network": "npx hardhat node",
+    "hardhat": "hardhat"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@openzeppelin/contracts": "^4.6.0"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/test-helpers": "^0.5.15",
+    "chai": "^4.3.6",
+    "ethereum-waffle": "^3.4.4",
+    "ethers": "^5.6.5",
+    "hardhat": "^2.9.3",
+    "hardhat-gas-reporter": "^1.0.8"
+  }
+}

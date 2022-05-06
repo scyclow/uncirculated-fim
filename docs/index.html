@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Uncirculated Fake Internet Money</title>
+
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      background: hsl(225deg 100% 40%);
+      font-family: sans-serif;
+      text-shadow: 3px 3px 5px #000;
+    }
+
+    h1 {
+      color: hsl(62deg 98% 46%);
+      text-align: center;
+      padding: 0 1em;
+      margin: 20px 0;
+    }
+
+    h2 {
+      color: #fff;
+      padding: 0 1em;
+      margin: 20px 0;
+
+    }
+
+    .buynow, .gotoAuction {
+      font-size: 25px;
+      padding-top: 0.5em;
+      margin-bottom: 0.75em;
+      color: hsl(62deg 98% 46%);
+      text-decoration: underline;
+      animation: 300ms;
+
+    }
+    .buynow:hover, .gotoAuction:hover {
+      color: hsl(35deg 98% 46%);
+      text-shadow: 4px 4px 12px #000;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 1.5em;
+      row-gap: 1.5em;
+      column-gap: 1.5em;
+    }
+
+    @media (max-width: 850px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 570px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .bill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .bill img {
+      width: 100%;
+      box-shadow: 3px 3px 5px #000;
+      animation: 1s;
+    }
+
+
+    .bill img:hover {
+      animation: Float 6s linear infinite;
+      box-shadow: 5px 5px 8px #000;
+    }
+
+    .sold {
+      color: #fff;
+      margin-top: 0.5em;
+      display: none;
+    }
+
+    .billMessage, .billMessage a {
+      color: #fff;
+    }
+
+    @keyframes Float {
+      0% {
+        transform: rotateX(0deg) rotateY(0) rotateZ(0);
+      }
+
+      33% {
+        transform: rotateX(6deg) rotateY(3deg) rotateZ(3deg);
+      }
+
+      66% {
+        transform: rotateX(-3deg) rotateY(-5deg) rotateZ(-3deg);
+      }
+
+      100% {
+        transform: rotateX(0deg) rotateY(0) rotateZ(0);
+      }
+    }
+
+
+    .old-price {
+      text-decoration: line-through;
+    }
+
+    .blink {
+      animation: Blink 2s steps(2, start) infinite;
+    }
+
+    @keyframes Blink {
+      0% {
+        visibility: visible;
+      }
+
+      50% {
+        visibility: hidden;
+      }
+
+      100% {
+        visibility: visible;
+      }
+    }
+
+    .marquee {
+      overflow: hidden;
+      display: inline-block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .marqueeInner {
+      display: inline-flex;
+      animation: Marquee 50s linear infinite;
+    }
+
+    .marqueeInner > * {
+      display: inline-block;
+      width: 7em;
+    }
+
+    @keyframes Marquee {
+      0% {
+        transform: translate3d(-50%, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(0%, 0, 0);
+      }
+    }
+
+    @keyframes MarqueeReverse {
+      0% {
+        transform: transform: translate3d(0%, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(-50%, 0, 0);
+      }
+    }
+
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+    }
+
+    .rotateZ {
+      animation: RotateZ 1.5s ease-in-out infinite;
+
+    }
+    #connectWallet {
+      font-size: 25px;
+      background: hsl(51deg 97% 65%);
+      padding: 0.75em;
+      border-radius: 3px;
+      cursor: pointer;
+      border: 2px solid hsl(21deg 98% 46%);
+      color:  hsl(21deg 98% 16%);
+    }
+
+    @keyframes RotateZ {
+      0% {
+        transform: perspective(500px) rotate3d(0,2,0,-15deg) translateZ(50px);
+        box-shadow: 15px 5px 5px #000;
+      }
+
+      50% {
+        transform: perspective(500px) rotate3d(0,2,0,15deg) translateZ(50px);
+        perspective: 200px;
+        box-shadow: -15px 5px 5px #000;
+      }
+
+      100% {
+        transform: perspective(500px) rotate3d(0,2,0,-15deg) translateZ(50px);
+        box-shadow: 15px 5px 5px #000;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <h1>UNCIRCULATED FAKE INTERNET MONEY</h1>
+
+  <div style="display: flex; justify-content: center;">
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/xz_dSzM5L4E?controls=0&autoplay=1" title="YouTube video player" showinfo="0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="marquee">
+
+    <div class="marqueeInner">
+
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+      <h2>BUY NOW</h2>
+    </div>
+  </div>
+
+  <h2>These Deals Won't Last!</h2>
+  <h2>A once-in-a-lifetime commemorative collectable!</h2>
+
+  <div id="walletNotConnected" style="display: none;">
+    <div class="center" >
+      <div class="rotateZ">
+        <button id="connectWallet">Connect Wallet</button>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h2>HISTORICAL REPLICAS <span class="blink"><span class="old-price">(0.2499</span> 0.0995 ETH)</span></h2>
+
+    <div class="grid">
+      <div class="bill" id="bill-0">
+        <a href="./images/0.jpeg" target="_blank"><img src="./images/0.jpeg"></a>
+        <div class="buynow" id="buynow-0">BUY NOW</div>
+        <div class="sold" id="sold-0">SOLD</div>
+        <div class="billMessage" id="billMessage-0"></div>
+      </div>
+      <div class="bill" id="bill-1">
+        <a href="./images/1.jpeg" target="_blank"><img src="./images/1.jpeg"></a>
+        <div class="buynow" id="buynow-1">BUY NOW</div>
+        <div class="sold" id="sold-1">SOLD</div>
+        <div class="billMessage" id="billMessage-1"></div>
+      </div>
+      <div class="bill" id="bill-2">
+        <a href="./images/2.jpeg" target="_blank"><img src="./images/2.jpeg"></a>
+        <div class="buynow" id="buynow-2">BUY NOW</div>
+        <div class="sold" id="sold-2">SOLD</div>
+        <div class="billMessage" id="billMessage-2"></div>
+      </div>
+      <div class="bill" id="bill-3">
+        <a href="./images/3.jpeg" target="_blank"><img src="./images/3.jpeg"></a>
+        <div class="buynow" id="buynow-3">BUY NOW</div>
+        <div class="sold" id="sold-3">SOLD</div>
+        <div class="billMessage" id="billMessage-3"></div>
+      </div>
+      <div class="bill" id="bill-4">
+        <a href="./images/4.jpeg" target="_blank"><img src="./images/4.jpeg"></a>
+        <div class="buynow" id="buynow-4">BUY NOW</div>
+        <div class="sold" id="sold-4">SOLD</div>
+        <div class="billMessage" id="billMessage-4"></div>
+      </div>
+      <div class="bill" id="bill-5">
+        <a href="./images/5.jpeg" target="_blank"><img src="./images/5.jpeg"></a>
+        <div class="buynow" id="buynow-5">BUY NOW</div>
+        <div class="sold" id="sold-5">SOLD</div>
+        <div class="billMessage" id="billMessage-5"></div>
+      </div>
+      <div class="bill" id="bill-6">
+        <a href="./images/6.jpeg" target="_blank"><img src="./images/6.jpeg"></a>
+        <div class="buynow" id="buynow-6">BUY NOW</div>
+        <div class="sold" id="sold-6">SOLD</div>
+        <div class="billMessage" id="billMessage-6"></div>
+      </div>
+      <div class="bill" id="bill-7">
+        <a href="./images/7.jpeg" target="_blank"><img src="./images/7.jpeg"></a>
+        <div class="buynow" id="buynow-7">BUY NOW</div>
+        <div class="sold" id="sold-7">SOLD</div>
+        <div class="billMessage" id="billMessage-7"></div>
+      </div>
+      <div class="bill" id="bill-8">
+        <a href="./images/8.jpeg" target="_blank"><img src="./images/8.jpeg"></a>
+        <div class="buynow" id="buynow-8">BUY NOW</div>
+        <div class="sold" id="sold-8">SOLD</div>
+        <div class="billMessage" id="billMessage-8"></div>
+      </div>
+      <div class="bill" id="bill-9">
+        <a href="./images/9.jpeg" target="_blank"><img src="./images/9.jpeg"></a>
+        <div class="buynow" id="buynow-9">BUY NOW</div>
+        <div class="sold" id="sold-9">SOLD</div>
+        <div class="billMessage" id="billMessage-9"></div>
+      </div>
+      <div class="bill" id="bill-10">
+        <a href="./images/10.jpeg" target="_blank"><img src="./images/10.jpeg"></a>
+        <div class="buynow" id="buynow-10">BUY NOW</div>
+        <div class="sold" id="sold-10">SOLD</div>
+        <div class="billMessage" id="billMessage-10"></div>
+      </div>
+
+      <div class="bill" id="bill-11">
+        <a href="./images/11.jpeg" target="_blank"><img src="./images/11.jpeg"></a>
+        <div class="buynow" id="buynow-11">BUY NOW</div>
+        <div class="sold" id="sold-11">SOLD</div>
+        <div class="billMessage" id="billMessage-11"></div>
+      </div>
+
+      <div class="bill" id="bill-12">
+        <a href="./images/12.jpeg" target="_blank"><img src="./images/12.jpeg"></a>
+        <div class="buynow" id="buynow-12">BUY NOW</div>
+        <div class="sold" id="sold-12">SOLD</div>
+        <div class="billMessage" id="billMessage-12"></div>
+      </div>
+
+      <div class="bill" id="bill-13">
+        <a href="./images/13.jpeg" target="_blank"><img src="./images/13.jpeg"></a>
+        <div class="buynow" id="buynow-13">BUY NOW</div>
+        <div class="sold" id="sold-13">SOLD</div>
+        <div class="billMessage" id="billMessage-13"></div>
+      </div>
+      <div class="bill" id="bill-14">
+        <a href="./images/14.jpeg" target="_blank"><img src="./images/14.jpeg"></a>
+        <div class="buynow" id="buynow-14">BUY NOW</div>
+        <div class="sold" id="sold-14">SOLD</div>
+        <div class="billMessage" id="billMessage-14"></div>
+      </div>
+
+      <div class="bill" id="bill-15">
+        <a href="./images/15.jpeg" target="_blank"><img src="./images/15.jpeg"></a>
+        <div class="buynow" id="buynow-15">BUY NOW</div>
+        <div class="sold" id="sold-15">SOLD</div>
+        <div class="billMessage" id="billMessage-15"></div>
+      </div>
+
+      <div class="bill" id="bill-16">
+        <a href="./images/16.jpeg" target="_blank"><img src="./images/16.jpeg"></a>
+        <div class="buynow" id="buynow-16">BUY NOW</div>
+        <div class="sold" id="sold-16">SOLD</div>
+        <div class="billMessage" id="billMessage-16"></div>
+      </div>
+
+      <div class="bill" id="bill-17">
+        <a href="./images/17.jpeg" target="_blank"><img src="./images/17.jpeg"></a>
+        <div class="buynow" id="buynow-17">BUY NOW</div>
+        <div class="sold" id="sold-17">SOLD</div>
+        <div class="billMessage" id="billMessage-17"></div>
+      </div>
+
+      <div class="bill" id="bill-18">
+        <a href="./images/18.jpeg" target="_blank"><img src="./images/18.jpeg"></a>
+        <div class="buynow" id="buynow-18">BUY NOW</div>
+        <div class="sold" id="sold-18">SOLD</div>
+        <div class="billMessage" id="billMessage-18"></div>
+      </div>
+
+      <div class="bill" id="bill-19">
+        <a href="./images/19.jpeg" target="_blank"><img src="./images/19.jpeg"></a>
+        <div class="buynow" id="buynow-19">BUY NOW</div>
+        <div class="sold" id="sold-19">SOLD</div>
+        <div class="billMessage" id="billMessage-19"></div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <section>
+    <h2>PREMIUM BILLS <span class="blink">(AUCTION)</span></h2>
+    <h2>(NEVER ENTERED INTO CIRCULATION)</h2>
+    <div class="grid">
+
+      <div class="bill" id="bill-20">
+        <a href="./images/20.jpeg" target="_blank"><img src="./images/20.jpeg"></a>
+        <div class="gotoAuction">GO TO AUCTION</div>
+      </div>
+
+      <div class="bill" id="bill-21">
+        <a href="./images/21.jpeg" target="_blank"><img src="./images/21.jpeg"></a>
+        <div class="gotoAuction">GO TO AUCTION</div>
+      </div>
+
+      <div class="bill" id="bill-22">
+        <a href="./images/22.jpeg" target="_blank"><img src="./images/22.jpeg"></a>
+        <div class="gotoAuction">GO TO AUCTION</div>
+      </div>
+
+      <div class="bill" id="bill-23">
+        <a href="./images/23.jpeg" target="_blank"><img src="./images/23.jpeg"></a>
+        <div class="gotoAuction">GO TO AUCTION</div>
+      </div>
+
+      <div class="bill" id="bill-24">
+        <a href="./images/24.jpeg" target="_blank"><img src="./images/24.jpeg"></a>
+        <div class="gotoAuction">GO TO AUCTION</div>
+      </div>
+    </div>
+  </section>
+</body>
+
+<script src="./min.ethers.js"></script>
+
+<script type="text/javascript">
+  const $connectWallet = document.getElementById('connectWallet')
+  const $walletNotConnected = document.getElementById('walletNotConnected')
+
+
+  const env = 'rinkeby'
+
+
+  const MINTER_CONTRACT = {
+    local: '0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6',
+    rinkeby: '0x10b002b76f6bd28caf28d6aa8d795fad20461f80',
+    mainnet: ''
+  }[env]
+
+  const TOKEN_CONTRACT = {
+    local: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+    rinkeby: '0xd9C7f7553B1bd5F2D86f46dEFC58adb7e95eeEcd',
+    mainnet: ''
+  }[env]
+
+
+
+;(async () => {
+  const uncirculatedABI = [
+    'function exists(uint256 tokenId) public view returns (bool)',
+    'function ownerOf(uint256 tokenId) public view returns (address)',
+    'function emitProjectEvent(string, string) public',
+  ]
+
+
+  const minterABI = [
+    'function mint(uint256 tokenId) public payable'
+  ]
+
+
+  let isEthBrowser
+
+  if (window.ethereum) {
+    console.log('web3')
+    window.provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
+    window.signer = provider.getSigner()
+    isEthBrowser = true
+
+  } else {
+    console.log('no Web3 detected')
+    isEthBrowser = false
+
+    //  display web browser message instead of connect/purchase
+    return
+  }
+
+
+  const UncirculatedContract = new ethers.Contract(TOKEN_CONTRACT, uncirculatedABI, provider)
+  const MinterContract = new ethers.Contract(MINTER_CONTRACT, minterABI, provider)
+
+
+
+  const isConnected = async () => {
+    if (!isEthBrowser) return false
+
+    try {
+      return await signer.getAddress()
+    } catch (e) {
+      return false
+    }
+  }
+
+  $connectWallet.onclick = async () => {
+    $connectWallet.innerHTML = 'Connecting...'
+    try {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' }, []);
+      const address = await isConnected()
+      onWalletConnected(address)
+
+    } catch (e) {
+      alert(`Error Connecting Wallet: ${e.message}`)
+      debugger
+      console.error(e)
+    }
+  }
+  const connectedWallet = await isConnected()
+
+  if (connectedWallet) {
+    console.log(`Wallet connected: ${connectedWallet}`)
+    onWalletConnected(connectedWallet)
+  } else {
+    $walletNotConnected.style.display = 'initial'
+    for (let bn of document.getElementsByClassName('buynow')) {
+      bn.style.display = 'none'
+    }
+  }
+
+  function onWalletConnected(wallet) {
+    $walletNotConnected.style.display = 'none'
+    updateTokenState()
+    setInterval(updateTokenState, 5000)
+    // show purchase button
+
+  }
+
+  const ignoreTokenUpdate = {}
+  async function updateTokenState() {
+    try {
+      const existingTokens = await Promise.all(
+        times(
+          25,
+          n => UncirculatedContract.connect(signer).exists(n)
+        )
+      )
+      window.existing = existingTokens
+      // console.log(await UncirculatedContract.connect(signer).ownerOf(2))
+
+      let i = 0
+      for (let bn of document.getElementsByClassName('buynow')) {
+        if (!ignoreTokenUpdate[i] && !existingTokens[i]) {
+          bn.style.display = 'initial'
+        } else if (!ignoreTokenUpdate[i]) {
+          bn.style.display = 'none'
+          const bill = document.getElementById('bill-'+i)
+          const sold = document.getElementById('sold-'+i)
+          bill.style.opacity = 0.6
+          sold.style.display = 'initial'
+        }
+        bn.onclick = buynow(i)
+
+        i++
+      }
+    } catch (e) {
+      console.log(e)
+    }
+
+  }
+
+
+
+  const buynow = billId => async () =>  {
+    $bill = document.getElementById('bill-'+billId)
+    $bn = document.getElementById('buynow-'+billId)
+    ignoreTokenUpdate[billId] = true
+    $bn.style.display = 'none'
+    setMessage(billId, 'Pending...')
+    try {
+      const tx = await MinterContract.connect(signer).mint(billId, {
+        value: ethers.utils.parseEther('0.0995')
+      })
+
+      const etherscanLink = `https://etherscan.io/tx/${tx.hash}`
+
+      const interval = setInterval(async () => {
+        const exists = await UncirculatedContract.connect(signer).exists(billId)
+        if (exists) {
+          clearInterval(interval)
+          setMessage(billId, `Success! <a href="https://zora.co/collections/${TOKEN_CONTRACT}/${billId}">View on Zora</a>`)
+        } else {
+          setMessage(billId, `
+            TX Pending. <a href="${etherscanLink}">Click Here to view on etherscan</a>
+          `)
+        }
+      }, 1000)
+    } catch (e) {
+      $bn.style.display = 'initial'
+      ignoreTokenUpdate[billId] = false
+
+      console.log(e)
+      const message = e.message.includes('Please enable Blind signing or Contract data in the Ethereum app Settings')
+        ? e.message += ' -- If you are using a Ledger device, you may need to open "Settings" and enable "Debug data", as well as "Blind signing"'
+        : e.message
+      setMessage(billId, message)
+    }
+  }
+
+  function setMessage(billId, value) {
+    const $msg = document.getElementById('billMessage-'+billId)
+    $msg.innerHTML = value
+  }
+
+
+  function times(t, fn) {
+    const out = []
+    for (let i = 0; i < t; i++) out.push(fn(i))
+    return out
+  }
+})()
+</script>
+</html>
