@@ -11,7 +11,7 @@ contract TokenURI {
   using Strings for uint256;
 
   IUncirculatedFakeInternetMoney public immutable uFIMContract;
-  string public baseImgUrl = 'ipfs://bafybeierik4sprq6kr4jocdwxpx52kwsorqqqw6t5xo6ymcw6tvsfscfga';
+  string public baseImgUrl = 'ipfs://bafybeierik4sprq6kr4jocdwxpx52kwsorqqqw6t5xo6ymcw6tvsfscfga/';
   string public baseExternalUrl = 'https://uncirculatedmoney.com/';
   string public license = 'CC BY-NC 4.0';
   string public imgExtension = '.jpeg';

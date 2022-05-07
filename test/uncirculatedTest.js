@@ -36,7 +36,7 @@ describe('UncirculatedFakeInternetMoney', () => {
     Minter = await MinterFactory.deploy(Uncirculated.address)
     await Minter.deployed()
 
-    await Minter.connect(owner).flipIsLocked()
+    // await Minter.connect(owner).flipIsLocked()
 
 
     await Uncirculated.connect(owner).setTokenURIPointer(TokenURI.address)

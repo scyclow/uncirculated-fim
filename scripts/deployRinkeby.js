@@ -27,7 +27,7 @@ async function main() {
   console.log('5')
 
 
-  await Uncirculated.connect(owner).setTokenURIPointer(TokenURI.address)
+  await Uncirculated.connect(owner).setTokenURIContract(TokenURI.address)
   await Uncirculated.connect(owner).setMintingAddress(Minter.address)
 
   console.log('6')

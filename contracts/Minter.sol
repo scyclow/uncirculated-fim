@@ -17,7 +17,7 @@ contract Minter {
   constructor(address _uFIMContract) {
     uFIMContract = IUncirculatedFIMContract(_uFIMContract);
     priceInWei = 99500000000000000;
-    isLocked = true;
+    isLocked = false;
   }
 
   modifier onlyOwner() {

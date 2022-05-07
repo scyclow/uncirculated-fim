@@ -1,3 +1,19 @@
+<!--
+TODOs
+- contract address
+- modify minter a little bit, maybe require minting function to include random number. don't verify on etherscan
+- doesn't need to be locked. can just point to it when i'm ready
+
+-re add autoplay
+- fake bullshit article
+
+
+
+
+
+ -->
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +29,8 @@
       background: hsl(225deg 100% 40%);
       font-family: sans-serif;
       text-shadow: 3px 3px 5px #000;
+      color: #fff;
+
     }
 
     h1 {
@@ -20,15 +38,63 @@
       text-align: center;
       padding: 0 1em;
       margin: 20px 0;
+      font-size: 50px;
+    }
+
+   @media (max-width: 570px) {
+      h1 {
+        font-size: 30px;
+      }
     }
 
     h2 {
-      color: #fff;
       padding: 0 1em;
       margin: 20px 0;
 
     }
 
+    h3 {
+      font-size: 16px;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+
+    p {
+      line-height: 1.4;
+      text-align: center;
+      padding: 1em;
+      max-width: 800px;
+      margin: 2em auto;
+      font-size: 18px;
+    }
+
+    footer {
+      padding: 2em 1em;
+      font-size: 12px;
+    }
+
+    footer > * {
+      margin: 0.5em 0;
+    }
+
+    footer a {
+      color: #fff;
+    }
+    .ensembleLogo {
+      max-width: 170px;
+      padding-left: 0.75em;
+    }
+
+    .ethLogo {
+      max-width: 50px;
+      max-height: 55px;
+      animation: Float 20s linear infinite;
+
+    }
+
+    .shadow {
+      box-shadow: 5px 5px 5px #000;
+    }
     .buynow, .gotoAuction {
       font-size: 25px;
       padding-top: 0.5em;
@@ -41,6 +107,18 @@
     .buynow:hover, .gotoAuction:hover {
       color: hsl(35deg 98% 46%);
       text-shadow: 4px 4px 12px #000;
+    }
+
+    .infoBox {
+      display: inline-flex;
+      align-items: center;
+      max-width: 410px;
+    }
+
+    @media (max-width: 570px) {
+      .infoBox {
+        flex-direction: column;
+      }
     }
 
     .grid {
@@ -174,7 +252,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: auto;
     }
 
     .rotateZ {
@@ -213,9 +290,11 @@
 </head>
 <body>
   <h1>UNCIRCULATED FAKE INTERNET MONEY</h1>
+  <h3 class="center">Presented by: <a href="https://www.ensemble.works/" target="_blank"><img src="./ensemble.png" class="ensembleLogo"></a></h3>
 
-  <div style="display: flex; justify-content: center;">
-    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/xz_dSzM5L4E?controls=0&autoplay=1" title="YouTube video player" showinfo="0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="center" style="margin: 2em 0; padding: 1em;">
+    <!-- <iframe class="shadow" width="560" height="315" src="https://www.youtube-nocookie.com/embed/xz_dSzM5L4E?controls=0&autoplay=1" title="YouTube video player" showinfo="0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+    <iframe class="shadow" width="560" height="315" src="https://www.youtube-nocookie.com/embed/xz_dSzM5L4E?controls=0" title="YouTube video player" showinfo="0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
   <div class="marquee">
 
@@ -247,8 +326,24 @@
     </div>
   </div>
 
-  <h2>These Deals Won't Last!</h2>
-  <h2>A once-in-a-lifetime commemorative collectable!</h2>
+
+  <section class="center">
+    <div class="infoBox">
+      <div>
+        <h2>These Deals Won't Last!</h2>
+        <h2>Limit 5 Per order</h2>
+      </div>
+      <div class="center">
+        <img class="ethLogo" src="./eth.png">
+        <span style="font-size: 45px; color: #fff;">$</span>
+      </div>
+
+    </div>
+  </section>
+  <!-- <h2>A once-in-a-lifetime commemorative collectable!</h2> -->
+
+  <p>Uncirculated Fake Internet Money is a non-monetary, commemorative collectable that honors the artistry of the original Fake Internet Money collection. This private minting offers a look at the history of the Fake Internet Money series from its initial conception through its completion. </p>
+
 
   <div id="walletNotConnected" style="display: none;">
     <div class="center" >
@@ -258,8 +353,8 @@
     </div>
   </div>
 
-  <section>
-    <h2>HISTORICAL REPLICAS <span class="blink"><span class="old-price">(0.2499</span> 0.0995 ETH)</span></h2>
+  <section style="margin-top: 3em">
+    <h2>HISTORICAL REPLICAS (<span style="font-size: 14px;">LIMITED-TIME OFFER:</span> <span class="old-price">0.2499</span> <span class="blink" style="text-decoration: underline;">0.0995</span> ETH)</h2>
 
     <div class="grid">
       <div class="bill" id="bill-0">
@@ -426,6 +521,12 @@
       </div>
     </div>
   </section>
+
+  <footer>
+    <div>Uncirculated Fake Internet Money is a purely commemorative collection, and holds no monetary value whatsoever. All bills are unassociated with the original Art Blocks collection, do not represent legal tender of any form, and may not be exchanged for any currencies, fiat or digital, after their minting. All sales are final, and The Artist shall not be held liable for any financial losses involving Uncirculated Fake Internet Money following the initial sale.</div>
+    <div>All content on this website is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND license.</a></div>
+    <div>(c) <a href="https://steviep.xyz" target="_blank">steviep.xyz</a></div>
+  </footer>
 </body>
 
 <script src="./min.ethers.js"></script>

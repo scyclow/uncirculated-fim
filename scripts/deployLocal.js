@@ -21,7 +21,7 @@ async function main() {
   await Minter.deployed()
 
 
-  await Uncirculated.connect(owner).setTokenURIPointer(TokenURI.address)
+  await Uncirculated.connect(owner).setTokenURIContract(TokenURI.address)
   await Uncirculated.connect(owner).setMintingAddress(Minter.address)
 
 

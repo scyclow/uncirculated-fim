@@ -63,7 +63,7 @@ contract UncirculatedFakeInternetMoney is ERC721, Ownable {
     mintingAddress = minter;
   }
 
-  function setTokenURIPointer(address _tokenURIAddress) external onlyOwner {
+  function setTokenURIContract(address _tokenURIAddress) external onlyOwner {
     tokenURIContract = ITokenURI(_tokenURIAddress);
   }
 
