@@ -12,7 +12,7 @@
 
   <meta name="theme-color" content="#0033CC">
 
-  <meta name="twitter:image" content="https://uncirculatedmoney.com/images/23.png">
+  <meta name="twitter:image" content="https://uncirculatedmoney.com/images/23.jpeg">
   <meta name="twitter:image:alt" content="Uncirculated Fake Internet Money #23">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@steviepxyz">
@@ -178,6 +178,10 @@
 
     .billMessage, .billMessage a {
       color: #fff;
+    }
+
+    .billMessage {
+      max-width: 250px;
     }
 
     @keyframes Float {
@@ -346,10 +350,13 @@
         <img class="ethLogo" src="./eth.png">
         <span style="font-size: 45px; color: #fff;">$</span>
       </div>
-
     </div>
   </section>
+
   <!-- <h2>A once-in-a-lifetime commemorative collectable!</h2> -->
+  <section class="center">
+    <a style="color: #fff; font-size: 25px;" href="https://etherscan.io/address/0xf49b26cf118db11a7dd1d9b88c7e1bc153851757#code" target="_blank">Read Contract</a>
+  </section>
 
   <p>Uncirculated Fake Internet Money is a non-monetary, commemorative collectable that honors the artistry of the original Fake Internet Money collection. This private minting offers a look at the history of the Fake Internet Money series from its initial conception through its completion. </p>
 
@@ -360,6 +367,10 @@
         <button id="connectWallet">Connect Wallet</button>
       </div>
     </div>
+  </div>
+
+  <div id="mintingClosed" style="display: none;">
+    <h1>Minting will open at 12 ET (11CT)</h1>
   </div>
 
   <section style="margin-top: 3em">
@@ -506,27 +517,27 @@
 
       <div class="bill" id="bill-20">
         <a href="./images/20.jpeg" target="_blank"><img src="./images/20.jpeg"></a>
-        <a href="https://zora.co/collections/0xf49b26cF118Db11A7DD1D9B88C7E1bC153851757/20" class="gotoAuction">GO TO AUCTION</a>
+        <a href="https://zora.co/collections/0xf49b26cF118Db11A7DD1D9B88C7E1bC153851757/20" target="_blank" class="gotoAuction">GO TO AUCTION</a>
       </div>
 
       <div class="bill" id="bill-21">
         <a href="./images/21.jpeg" target="_blank"><img src="./images/21.jpeg"></a>
-        <a href="https://zora.co/collections/0xf49b26cF118Db11A7DD1D9B88C7E1bC153851757/21" class="gotoAuction">GO TO AUCTION</a>
+        <a href="https://zora.co/collections/0xf49b26cF118Db11A7DD1D9B88C7E1bC153851757/21" target="_blank" class="gotoAuction">GO TO AUCTION</a>
       </div>
 
       <div class="bill" id="bill-22">
         <a href="./images/22.jpeg" target="_blank"><img src="./images/22.jpeg"></a>
-        <a href="https://zora.co/collections/0xf49b26cF118Db11A7DD1D9B88C7E1bC153851757/22" class="gotoAuction">GO TO AUCTION</a>
+        <a href="https://zora.co/collections/0xf49b26cF118Db11A7DD1D9B88C7E1bC153851757/22" target="_blank" class="gotoAuction">GO TO AUCTION</a>
       </div>
 
       <div class="bill" id="bill-23">
         <a href="./images/23.jpeg" target="_blank"><img src="./images/23.jpeg"></a>
-        <a href="https://zora.co/collections/0xf49b26cF118Db11A7DD1D9B88C7E1bC153851757/23" class="gotoAuction">GO TO AUCTION</a>
+        <a href="https://zora.co/collections/0xf49b26cF118Db11A7DD1D9B88C7E1bC153851757/23" target="_blank" class="gotoAuction">GO TO AUCTION</a>
       </div>
 
       <div class="bill" id="bill-24">
         <a href="./images/24.jpeg" target="_blank"><img src="./images/24.jpeg"></a>
-        <a href="https://zora.co/collections/0xf49b26cF118Db11A7DD1D9B88C7E1bC153851757/24" class="gotoAuction">GO TO AUCTION</a>
+        <a href="https://zora.co/collections/0xf49b26cF118Db11A7DD1D9B88C7E1bC153851757/24" target="_blank" class="gotoAuction">GO TO AUCTION</a>
       </div>
     </div>
   </section>
@@ -543,6 +554,7 @@
 <script type="text/javascript">
   const $connectWallet = document.getElementById('connectWallet')
   const $walletNotConnected = document.getElementById('walletNotConnected')
+  const $mintingClosed = document.getElementById('mintingClosed')
 
 
   const env = 'mainnet'
@@ -566,7 +578,7 @@
   const uncirculatedABI = [
     'function exists(uint256 tokenId) public view returns (bool)',
     'function ownerOf(uint256 tokenId) public view returns (address)',
-    'function emitProjectEvent(string, string) public',
+    'function mintingAddress() public view returns (address)',
   ]
 
 
@@ -595,6 +607,22 @@
   const UncirculatedContract = new ethers.Contract(TOKEN_CONTRACT, uncirculatedABI, provider)
   const MinterContract = new ethers.Contract(MINTER_CONTRACT, minterABI, provider)
 
+  let mintingOpen = false
+
+  async function updateMintingOpen() {
+    const minter = await UncirculatedContract.connect(signer).mintingAddress()
+    mintingOpen = minter.toLowerCase() === MINTER_CONTRACT.toLowerCase()
+
+    if (!mintingOpen) {
+      $mintingClosed.style.display = 'initial'
+
+    } else {
+      $mintingClosed.style.display = 'none'
+
+    }
+  }
+  updateMintingOpen()
+  setInterval(updateMintingOpen, 3000)
 
 
   const isConnected = async () => {
@@ -654,7 +682,9 @@
 
       let i = 0
       for (let bn of document.getElementsByClassName('buynow')) {
-        if (!ignoreTokenUpdate[i] && !existingTokens[i]) {
+        if (!mintingOpen) {
+          bn.style.display = 'none'
+        } else if (!ignoreTokenUpdate[i] && !existingTokens[i]) {
           bn.style.display = 'initial'
         } else if (!ignoreTokenUpdate[i]) {
           bn.style.display = 'none'
