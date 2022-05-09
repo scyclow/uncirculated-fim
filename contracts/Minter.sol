@@ -5,8 +5,8 @@ pragma solidity ^0.8.11;
 interface IUncirculatedFIMContract {
   function mint(address to, uint256 tokenId) external;
   function owner() external view returns (address);
-
 }
+
 
 contract Minter {
   uint256 public priceInWei;

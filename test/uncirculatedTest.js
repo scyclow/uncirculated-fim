@@ -39,7 +39,7 @@ describe('UncirculatedFakeInternetMoney', () => {
     // await Minter.connect(owner).flipIsLocked()
 
 
-    await Uncirculated.connect(owner).setTokenURIPointer(TokenURI.address)
+    await Uncirculated.connect(owner).setTokenURIContract(TokenURI.address)
     await Uncirculated.connect(owner).setMintingAddress(Minter.address)
 
     const baseMetadata = {
